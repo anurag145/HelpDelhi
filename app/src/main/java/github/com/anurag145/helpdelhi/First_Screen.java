@@ -34,7 +34,7 @@ public class First_Screen extends AppCompatActivity {
 
             }
         }
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,"http://sponsorhub.xyz/api/v1/products",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,"Enter your url here",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
