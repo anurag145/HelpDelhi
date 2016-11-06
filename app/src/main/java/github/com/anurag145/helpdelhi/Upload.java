@@ -36,6 +36,7 @@ public class Upload extends AppCompatActivity {
     private String s;
     private LocationTracker tracker;
     private ProgressDialog Dialog;
+    int flag =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +71,12 @@ public class Upload extends AppCompatActivity {
 
             @Override
             protected String doInBackground(Void... voids) {
-                StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://sponsorhub.xyz/api/v1/products",
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,"Enter your url here for db connectivity",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String s) {
 
-                                Log.d("fuckity fuck ",s);
+
 
                             }
                         },
@@ -83,7 +84,7 @@ public class Upload extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError volleyError) {
 
-                            Log.d("fuckity fuck fuck",volleyError.toString());
+
                             }
                         }){
                     @Override
@@ -103,11 +104,15 @@ public class Upload extends AppCompatActivity {
                 };
 
                 //Creating a Request Queue
-                RequestQueue requestQueue = Volley.newRequestQueue(context);
-              Log.d("Fuck you ","I am here too");
-                //Adding request to the queue
+                if(flag==0) {
+                    flag=1;
+                    RequestQueue requestQueue = Volley.newRequestQueue(context);
 
-                requestQueue.add(stringRequest);
+                    //Adding request to the queue
+
+                    requestQueue.add(stringRequest);
+                }
+
                 return null;
             }
         }
@@ -120,7 +125,7 @@ public class Upload extends AppCompatActivity {
 
 
                 try {
-                    Log.d("Fuck it","I am here");
+
 
                     TrackerSettings settings= new TrackerSettings().setUseGPS(true)
                             .setUseNetwork(true)
@@ -144,7 +149,7 @@ public class Upload extends AppCompatActivity {
 
             }catch(Exception e)
                 {
-                    Log.d("fuck me",e.toString());
+
                 }
 
     }
@@ -163,7 +168,7 @@ public class Upload extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e("Fuck","fuck here");
+
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle bundle = data.getExtras();
 
